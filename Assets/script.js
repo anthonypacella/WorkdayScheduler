@@ -8,10 +8,10 @@ const dayNow = moment().format('dddd') + ", " + moment().format('MMMM Do');
 $('#currentDay').text(dayNow);
 
 for (let i = 0; i < textEl.length; i++) {
-    if (hourNow > 2){
+    if (hourNow > textEl[i].id){
         textEl.eq(i).addClass("past");
     }
-    else if (hourNow < 4) {
+    else if (hourNow < textEl[i].id) {
         textEl.eq(i).addClass("future");
     }
     else {
@@ -27,7 +27,6 @@ console.log(savedTasksList);
 if (savedTasksList !== null) {
     for (let i = 0; i < savedTasksList.length; i++) {
         const timeVal = savedTasksList[i].time.slice(0,-5);
-        textEl.eq(timeVal-9).text = savedTasksList[i].task;
         let taskTextArea = $(`#${timeVal}`);
         taskTextArea.val(savedTasksList[i].task);
     }
